@@ -61,3 +61,7 @@ def get_floor_price(folder_path=None, file_path=None):
     with open(file_path, "w") as file:
         json.dump(current_data, file, indent=None)
 
+
+
+
+get_floor_price()
