@@ -35,3 +35,4 @@ jobs:
           git push origin HEAD:main
         env:
           MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }}
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
