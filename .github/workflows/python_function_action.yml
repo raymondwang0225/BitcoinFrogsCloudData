@@ -24,4 +24,4 @@ jobs:
       - name: Execute Python function
         env:
           MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }} # 更新为 MY_BIS_KEY
-        run: python get_floor_data.py
+        run: python bis_get_floor_price.py
