@@ -16,7 +16,7 @@ params = {
 
 def get_floor_price(file_path=None):
     # Set default file_path if it is None
-    default_file_path = "floor_prices.json"
+    default_file_path = "BitcoinFrogsCloudData/floor_prices.json"
 
     if file_path is None:
         file_path = default_file_path
