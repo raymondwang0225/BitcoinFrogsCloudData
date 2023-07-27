@@ -36,3 +36,7 @@ jobs:
         env:
           MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }}
           MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        with:
+          # 使用自定义的 MY_GITHUB_TOKEN 作为令牌
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
+
