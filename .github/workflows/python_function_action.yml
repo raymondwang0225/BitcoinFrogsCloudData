@@ -26,19 +26,11 @@ jobs:
           MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }}
         run: python bis_get_floor_price.py
 
-      - name: Create and Update JSON
+      - name: Commit and push changes
         run: |
-          mkdir -p Bitcoin_Frogs_Data # Create the folder if it doesn't exist
-          cp floor_prices.json Bitcoin_Frogs_Data/ # Copy the JSON file to the new folder
-          cd Bitcoin_Frogs_Data
-
-          # Execute your Python script to update the JSON
-          python bis_get_floor_price.py
-
-          # Commit and push changes to the repository
-          git config --global user.name "Your GitHub Username"
-          git config --global user.email "your-email@example.com"
-          git add .
+          git config --global user.name "raymondwang0225"
+          git config --global user.email "raymondwang0225@gmail.com"
+          git add floor_prices.json
           git commit -m "Update floor_prices.json"
           git push origin HEAD:main
         env:
