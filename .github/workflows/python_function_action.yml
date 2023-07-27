@@ -2,7 +2,7 @@ name: Python Function Action
 
 on:
   schedule:
-    - cron: '*/2 * * * *' # Every 2 minutes
+    - cron: '*/2 * * * *' # 每隔 2 分钟执行一次
 
 jobs:
   run_function:
@@ -11,17 +11,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2.5.5
+        uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v2.4.2
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.9' # Update to Python 3.9
+          python-version: '3.9' # 更新到 Python 3.9
 
       - name: Install dependencies
-        run: pip install -r requirements.txt # If there are any dependencies, you can install them here
+        run: pip install -r requirements.txt # 如果有依赖的话，可以在此安装
 
       - name: Execute Python function
         env:
-          MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }} # Update to MY_BIS_KEY
-        run: python bis_get_floor_data.py
+          MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }} # 更新为 MY_BIS_KEY
+        run: python get_floor_data.py
