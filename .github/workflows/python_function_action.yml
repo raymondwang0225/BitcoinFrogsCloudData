@@ -11,17 +11,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
-          python-version: '3.9' # 更新到 Python 3.9
+          python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt # 如果有依赖的话，可以在此安装
+        run: pip install -r requirements.txt
 
       - name: Execute Python function
         env:
-          MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }} # 更新为 MY_BIS_KEY
+          MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }}
         run: python bis_get_floor_price.py
