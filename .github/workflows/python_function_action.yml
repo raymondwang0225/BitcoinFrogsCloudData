@@ -1,0 +1,27 @@
+name: Python Function Action
+
+on:
+  schedule:
+    - cron: '*/2 * * * *' # 每隔 2 分钟执行一次
+
+jobs:
+  run_function:
+    name: Run Python Function
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10' # 这里替换为你的 Python 版本，例如 '3.8'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt # 如果有依赖的话，可以在此安装
+
+      - name: Execute Python function
+        env:
+          MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }}
+        run: python bis_get_floor_price.py
