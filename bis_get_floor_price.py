@@ -39,7 +39,7 @@ def get_floor_price():
 
     current_data.insert(0, new_entry)
 
-    with open(file_path, "w") as file:
+    with open(default_file_path, "w") as file:
         json.dump(current_data, file, indent=None)
 
 # Call the function with default file_path if the script is directly executed
