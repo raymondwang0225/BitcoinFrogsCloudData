@@ -14,12 +14,11 @@ params = {
     'slug': 'bitcoin-frogs'
 }
 
-def get_floor_price(file_path=None):
+def get_floor_price():
     # Set default file_path if it is None
-    default_file_path = "BitcoinFrogsCloudData/floor_prices.json"
+    default_file_path = "floor_prices.json"
 
-    if file_path is None:
-        file_path = default_file_path
+    
 
     response = requests.get(url, headers=headers, params=params)
     json_data = response.json()
@@ -28,7 +27,7 @@ def get_floor_price(file_path=None):
         min_price = round(json_data['data']['floor_price']/100000000, 4)
 
     try:
-        with open(file_path, "r") as file:
+        with open(default_file_path, "r") as file:
             current_data = json.load(file)
     except FileNotFoundError:
         current_data = []
