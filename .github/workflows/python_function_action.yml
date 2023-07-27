@@ -24,7 +24,7 @@ jobs:
       - name: Execute Python function
         env:
           MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }}
-        run: python "${{ github.workspace }}/bis_get_floor_price.py"
+        run: python bis_get_floor_price.py
 
       - name: Commit and push changes
         run: |
