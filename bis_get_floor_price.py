@@ -44,5 +44,15 @@ def get_floor_price():
     with open(file_path, "w") as file:
         json.dump(current_data, file, indent=None)
 
+    # Run git pull and resolve conflicts if needed
+    try:
+        subprocess.run(["git", "pull", "origin", "main"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except subprocess.CalledProcessError as e:
+        # If there is a conflict, resolve it and commit the changes
+        if "CONFLICT" in e.stderr.decode("utf-8"):
+            subprocess.run(["git", "add", file_path])
+            subprocess.run(["git", "commit", "-m", "Resolve conflicts"])
+            subprocess.run(["git", "push", "origin", "HEAD:main"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
 if __name__ == "__main__":
     get_floor_price()
