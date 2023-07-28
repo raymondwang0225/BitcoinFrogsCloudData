@@ -28,6 +28,6 @@ jobs:
         python generate_json.py
         git config --global user.name "raymondwang0225"
         git config --global user.email "raymondwang0225@gmail.com"
-        git add data/data.json
+        git add BitcoinFrogsCloudData/data.json
         git commit -m "Update JSON with random number"
         git push
