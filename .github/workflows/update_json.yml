@@ -1,0 +1,33 @@
+name: Update JSON
+
+on:
+  schedule:
+    - cron: '*/2 * * * *'  # 每隔2分钟执行一次
+
+jobs:
+  update_json:
+    runs-on: ubuntu-latest
+
+    env:
+      MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt  # 如果有其他依赖需求，可以在 requirements.txt 中列出
+
+    - name: Generate and update JSON
+      run: |
+        python generate_json.py
+        git config --global user.name "raymondwang0225"
+        git config --global user.email "raymondwang0225@gmail.com"
+        git add data/data.json
+        git commit -m "Update JSON with random number"
+        git push
