@@ -2,7 +2,7 @@ name: Python Function Action
 
 on:
   schedule:
-    - cron: '*/2 * * * *' # 每隔 2 分钟执行一次
+    - cron: '*/1 * * * *' # 每隔 2 分钟执行一次
 
 jobs:
   run_function:
