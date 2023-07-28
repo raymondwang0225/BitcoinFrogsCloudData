@@ -29,9 +29,20 @@ jobs:
       - name: Commit and push changes
         run: |
           git config --global user.name "raymondwang0225"
-          git config --global user.email "raymondwang0225@gmail.com"
+          git config --global user.email "raymondwang0225@"
           git add floor_prices.json
           git commit -m "Update floor_prices.json"
+
+          # Run git pull and resolve conflicts if needed
+          git pull origin main || true
+
+          # If there is a conflict, resolve it and commit the changes
+          if git diff-index --name-only --diff-filter=U HEAD; then
+            git add floor_prices.json
+            git commit -m "Resolve conflicts"
+          fi
+
+          # Push the changes to the remote main branch
           git push origin HEAD:main
         env:
           MY_BIS_KEY: ${{ secrets.MY_BIS_KEY }}
